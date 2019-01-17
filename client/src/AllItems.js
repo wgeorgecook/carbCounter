@@ -12,17 +12,20 @@ export default class AllItems extends Component {
   }
 
   loadAllItems = () => {
-    fetch('/api/items')
-    .then( res => res.json())
+    fetch('/items')
+    .then( res => res.json() )
     .then( res =>  {
       if (!res.success) this.setState({ error: res.error })
       this.setState({ data: res.data })
-    })
+    });
   }
+
   render() {
     return (
       <div className="allitems">
-        { this.props.children }
+        { this.state.data.map((item, i) => {
+          return (<li className='item' key={i}>{item.name}, {item.carbs}</li>)
+        }) }
       </div>
     )
   }
