@@ -9,8 +9,9 @@ export default class NewItem extends Component {
   render() {
     return (
       <div className="newitem">
-        <input type='text' value="Item name" className="newitemname" onChange={ this.handleChange }/>
-        <input type='number' value="0" className="newitemcarbs" />
+        <input type='text' placeholder="Item name" className="newitemname" onChange={ this.handleChange }/>
+        <input type='number' placeholder="Carbohydrates" className="newitemcarbs" />
+        <button type='submit'>Add item</button>
       </div>
     )
   }
