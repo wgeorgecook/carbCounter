@@ -13,6 +13,11 @@ export default class AllItems extends Component {
 
   loadAllItems = () => {
     fetch('/api/items')
+    .then( res => res.json())
+    .then( res =>  {
+      if (!res.success) this.setState({ error: res.error })
+      this.setState({ data: res.data })
+    })
   }
   render() {
     return (
