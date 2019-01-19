@@ -40,10 +40,6 @@ export default class SearchItems extends Component {
           onChange={this.handleChange}
           loadOptions={this.getOptions}
         />
-        <div className='result'>
-          <div className="name">Item: { this.state.selectedOption.value } </div>
-          <div className="carbs">Carbs: { this.state.selectedOption.carbs } </div>
-        </div>
       </div>
     )
   }
