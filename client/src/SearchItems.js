@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AsyncSelect from 'react-select/lib/Async'
-
+import AsyncSelect from 'react-select/lib/Async';
+import HoldItems from './HoldItems';
 
 export default class SearchItems extends Component {
 
@@ -39,6 +39,10 @@ export default class SearchItems extends Component {
           value={this.state.selectedOption}
           onChange={this.handleChange}
           loadOptions={this.getOptions}
+        />
+
+        <HoldItems
+          heldItems={this.selectItems}
         />
       </div>
     )
