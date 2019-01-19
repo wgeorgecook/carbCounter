@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewItem from './NewItem';
+import SearchItems from './SearchItems';
 
 import './App.css';
 
@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <div className="root">
-        <NewItem />
+        <SearchItems />
       </div>
     );
   }
