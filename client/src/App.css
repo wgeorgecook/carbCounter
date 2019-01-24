@@ -17,3 +17,12 @@
 .App-link {
   color: #61dafb;
 }
+
+.top {
+  width: 33%;
+  margin: auto;
+}
+.newForm {
+  width: 66%;
+  margin: auto;
+}
