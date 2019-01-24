@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className="root">
         <div className="top">Welcome to Carb Counter</div>
-        <SearchItems />
+        <div className="search"><SearchItems /></div>
       {(this.state.new === true)
         ?  <div className="newForm">
             <NewItem onHideForm={ this.switchNew }/>
