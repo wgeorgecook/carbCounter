@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
-import { FormControl } from '@material-ui/core';
+import { FormControl, Snackbar } from '@material-ui/core';
 
 export default class NewItem extends Component {
 
@@ -17,6 +17,10 @@ export default class NewItem extends Component {
     const value = e.target.value;
     // console.log(e.target)
     this.setState({ [key]: value })
+  }
+
+  closeSnack = () => {
+    this.setState( { success: null })
   }
 
 
@@ -43,19 +47,25 @@ export default class NewItem extends Component {
     return (
       <div className="newItem">
         <form id="newItemForm" onSubmit={ this.submitItem }>
-          <FormControl margin="normal" required>
+          <FormControl variant="outlined" required>
             <Input type='text' placeholder="Item name" id="name" value={ this.state.name } onChange={ this.handleChange }/>
           </FormControl>
-          <FormControl margin="normal" required>
+          <FormControl required>
             <Input type='number' placeholder="Carbohydrates" id="carbs" value={ this.state.carbs }  onChange={ this.handleChange } required/>
           </FormControl>
           <Button variant="contained" color="primary" type='submit' form="newItemForm">Add item</Button>
           <Button variant="contained" color="primary" onClick={ this.props.onHideForm }>Hide form</Button>
         </form>
-        { ( this.state.success )
-          ? <div className="success">Successfully added item!</div>
-          : null
-        }
+        <Snackbar
+          message={<span id='message-id'>Successfully added item!</span>}
+          open={this.state.success}
+          onClose={this.closeSnack}
+          autoHideDuration={6000}
+          anchorOrigin={ {
+            vertical: 'bottom',
+            horizontal: 'left'
+          }}
+        />
       </div>
     )
   }
