@@ -21,8 +21,15 @@
 .top {
   width: 33%;
   margin: auto;
+  margin-bottom: 2em;
 }
+
+.search {
+  margin-bottom: 2em;
+}
+
 .newForm, .addNew {
   width: 66%;
   margin: auto;
+  margin-bottom: 2em;
 }
