@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import { FormControl } from '@material-ui/core';
 
 export default class NewItem extends Component {
 
@@ -11,12 +13,15 @@ export default class NewItem extends Component {
   }
 
   handleChange = (e) => {
-    const key = e.target.className;
+    const key = e.target.id;
     const value = e.target.value;
+    // console.log(e.target)
     this.setState({ [key]: value })
   }
 
+
   submitItem = (e) => {
+    console.log(e.target);
     e.preventDefault();
     const { name, carbs } = this.state;
     if (!name || !carbs) return;
@@ -37,10 +42,14 @@ export default class NewItem extends Component {
   render() {
     return (
       <div className="newItem">
-        <form className="newItemForm" onSubmit={ this.submitItem }>
-          <input type='text' placeholder="Item name" className="name" value={ this.state.name } onChange={ this.handleChange }/>
-          <input type='number' placeholder="Carbohydrates" className="carbs" value={this.state.carbs } onChange={ this.handleChange }/>
-          <Button type='submit' variant="contained" color="primary">Add item</Button>
+        <form id="newItemForm" onSubmit={ this.submitItem }>
+          <FormControl margin="normal" required>
+            <Input type='text' placeholder="Item name" id="name" value={ this.state.name } onChange={ this.handleChange }/>
+          </FormControl>
+          <FormControl margin="normal" required>
+            <Input type='number' placeholder="Carbohydrates" id="carbs" value={ this.state.carbs }  onChange={ this.handleChange } required/>
+          </FormControl>
+          <Button variant="contained" color="primary" type='submit' form="newItemForm">Add item</Button>
         </form>
         { ( this.state.success )
           ? <div className="success">Successfully added item!</div>
