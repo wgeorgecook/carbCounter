@@ -22,7 +22,7 @@
   width: 33%;
   margin: auto;
 }
-.newForm {
+.newForm, .addNew {
   width: 66%;
   margin: auto;
 }
