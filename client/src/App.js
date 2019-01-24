@@ -25,13 +25,7 @@ class App extends Component {
         <SearchItems />
       {(this.state.new === true)
         ?  <div className="newForm">
-            <NewItem />
-            <Button
-              variant="contained"
-              color="primary"
-              className="addNew"
-              onClick={this.switchNew}>Hide form
-            </Button>
+            <NewItem onHideForm={ this.switchNew }/>
           </div>
         : <div className="addNew">
             <Button
