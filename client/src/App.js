@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import SearchItems from './SearchItems';
-
-import './App.css';
+import Button from '@material-ui/core/Button';
 import NewItem from './NewItem';
+import './App.css';
+
 
 
 
@@ -11,8 +12,10 @@ class App extends Component {
     new: false
   }
 
-  showNew = () => {
-    this.setState({new: true});
+  switchNew = () => {
+    (this.state.new)
+    ? this.setState({new: false})
+    : this.setState({new: true});
   }
 
   render() {
@@ -21,8 +24,23 @@ class App extends Component {
         <div className="top">Welcome to Carb Counter</div>
         <SearchItems />
       {(this.state.new === true)
-        ?  <NewItem />
-        : <button className="addNew" onClick={this.showNew}>Add new item</button>
+        ?  <div className="newForm">
+            <NewItem />
+            <Button
+              variant="contained"
+              color="primary"
+              className="addNew"
+              onClick={this.switchNew}>Hide form
+            </Button>
+          </div>
+        : <div className="addNew">
+            <Button
+              variant="contained"
+              color="primary"
+              className="addNew"
+              onClick={this.switchNew}>Add new item
+            </Button>
+          </div>
           }
       </div>
     );
