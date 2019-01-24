@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AsyncSelect from 'react-select/lib/Async';
 import HoldItems from './HoldItems';
+import './SearchItems.css';
 
 export default class SearchItems extends Component {
 
