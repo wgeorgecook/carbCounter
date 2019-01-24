@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 
 export default class NewItem extends Component {
 
@@ -39,7 +40,7 @@ export default class NewItem extends Component {
         <form className="newItemForm" onSubmit={ this.submitItem }>
           <input type='text' placeholder="Item name" className="name" value={ this.state.name } onChange={ this.handleChange }/>
           <input type='number' placeholder="Carbohydrates" className="carbs" value={this.state.carbs } onChange={ this.handleChange }/>
-          <button type='submit'>Add item</button>
+          <Button type='submit' variant="contained" color="primary">Add item</Button>
         </form>
         { ( this.state.success )
           ? <div className="success">Successfully added item!</div>
