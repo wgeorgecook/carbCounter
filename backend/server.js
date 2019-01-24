@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
 // Find items
 router.get('/items', (req, res) => {
     Item.find((err, items) => {
-        if (err) return res.json( {success: false, error: err });
+        if (err) return res.json( {success: false, error: err.message });
         return res.json({ success: true, data: items})
     });
 });
