@@ -15,6 +15,10 @@ export default class HoldItems extends Component {
       const key = e.target.id;
       const value = e.target.value;
       this.setState({ [key]: value })
+    } else {
+      const key = e.target.id;
+      const value = 1
+      this.setState({ [key]: value })
     }
   }
 
