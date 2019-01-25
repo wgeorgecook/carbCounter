@@ -7,16 +7,15 @@ export default class HoldItems extends Component {
 
   render() {
     return (
-      (this.props)
-      ? null
-      : <div className="heldItems">
+      (this.props.items)
+      ? <div className="heldItems">
           <List>
             {this.props.items.map((item) => {
               return(
                 <ListItem>
                   <ListItemText
-                    primary={item.name}
-                    secondar={item.carbs}
+                    primary={item.label}
+                    secondary={item.carbs}
                   />
                 </ListItem>
               )
@@ -24,6 +23,7 @@ export default class HoldItems extends Component {
           }
           </List>
         </div>
+      : null
     )
   }
 }
