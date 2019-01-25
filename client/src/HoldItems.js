@@ -5,27 +5,25 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 export default class HoldItems extends Component {
 
-  state = {
-    items: this.props.items
-  }
-
   render() {
     return (
-      <div className="heldItems">
-        <List>
-          {this.state.items.map((item) => {
-            return(
-              <ListItem>
-                <ListItemText
-                  primary={item.name}
-                  secondar={item.carbs}
-                />
-              </ListItem>
-            )
-          })
-        }
-        </List>
-      </div>
+      (this.props)
+      ? null
+      : <div className="heldItems">
+          <List>
+            {this.props.items.map((item) => {
+              return(
+                <ListItem>
+                  <ListItemText
+                    primary={item.name}
+                    secondar={item.carbs}
+                  />
+                </ListItem>
+              )
+            })
+          }
+          </List>
+        </div>
     )
   }
 }
