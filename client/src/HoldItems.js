@@ -11,7 +11,8 @@ export default class HoldItems extends Component {
   }
 
   updateServing = (e) => {
-    if (e.target.value !== "") {
+
+    if (e.target.value !== "" && e.target.value >= 0) {
       const key = e.target.id;
       const value = e.target.value;
       this.setState({ [key]: value })
@@ -40,10 +41,11 @@ export default class HoldItems extends Component {
                     id={item.label}
                     placeholder="Servings"
                     onChange={this.updateServing}
+                    defaultValue="1"
                   />
                   <ListItemText
                     primary="Total"
-                    secondary={(item.carbs * this.state[item.label] || item.carbs )}
+                    secondary={( item.carbs * this.state[item.label] || item.carbs )}
                   />
                 </ListItem>
               )
