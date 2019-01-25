@@ -8,14 +8,13 @@ import { Input } from '@material-ui/core';
 export default class HoldItems extends Component {
 
   state = {
-    serving: []
   }
 
   updateServing = (e) => {
-    console.log(e.target.id)
     if (e.target.value !== "") {
-      const newServings = [...this.state.serving, parseInt(e.target.value)]
-      this.setState({serving: newServings})
+      const key = e.target.id;
+      const value = e.target.value;
+      this.setState({ [key]: value })
     }
   }
 
@@ -40,7 +39,7 @@ export default class HoldItems extends Component {
                   />
                   <ListItemText
                     primary="Total"
-                    secondary={(item.carbs * this.state.serving[i]) || item.carbs}
+                    secondary={(item.carbs * this.state[item.label] || item.carbs )}
                   />
                 </ListItem>
               )
