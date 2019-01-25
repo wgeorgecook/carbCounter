@@ -9,7 +9,7 @@ export default class HoldItems extends Component {
 
   render() {
     return (
-      (this.props.items)
+      ((this.props.items).length > 0)
       ? <div className="heldItems">
           <List>
             {this.props.items.map((item, i) => {
@@ -22,10 +22,11 @@ export default class HoldItems extends Component {
                 </ListItem>
               )
               })}
+
             <ListItem>
               <ListItemText
                   primary="Total carbs"
-                  secondary={ this.props.allCarbs }
+                  secondary={ ( this.props.items.map(item => item.carbs).reduce( (add, item) => { return add + item }) ) }
                 />
             </ListItem>
           </List>
