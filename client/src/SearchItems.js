@@ -30,10 +30,11 @@ export default class SearchItems extends Component {
     // This sets the state value of the search box which we then can use to filter results
     this.setState({
       selectedOption,
-      selectItems: this.state.selectedItems.concat(selectedOption)
+      selectedItems: this.state.selectedItems.concat(selectedOption)
     });
     return selectedOption;
   }
+
 
 
   render() {
@@ -47,7 +48,7 @@ export default class SearchItems extends Component {
         />
 
         <HoldItems
-          heldItems={this.selectItems}
+          items={this.state.selectedItems}
         />
       </div>
     )
