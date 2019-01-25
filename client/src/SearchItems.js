@@ -7,7 +7,8 @@ export default class SearchItems extends Component {
 
   state = {
     options: [],
-    selectedOption: ""
+    selectedOption: "",
+    selectedItems: []
   }
 
 
@@ -27,10 +28,13 @@ export default class SearchItems extends Component {
 
   handleChange = (selectedOption) => {
     // This sets the state value of the search box which we then can use to filter results
-    this.setState({ selectedOption: selectedOption[0] });
-    console.log(`Option selected: ${selectedOption}`);
+    this.setState({
+      selectedOption,
+      selectItems: this.state.selectedItems.concat(selectedOption)
+    });
     return selectedOption;
   }
+
 
   render() {
     return (
