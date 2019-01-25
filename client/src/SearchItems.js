@@ -7,7 +7,7 @@ export default class SearchItems extends Component {
 
   state = {
     options: [],
-    selectedOption: "",
+    selectedOptions: "",
   }
 
 
@@ -25,10 +25,10 @@ export default class SearchItems extends Component {
   }
 
 
-  handleChange = (selectedOption) => {
+  handleChange = (selectedOptions) => {
     // This sets the state value of the search box which we then can use to filter results
-    this.setState({ selectedOption });
-    return selectedOption;
+    this.setState({ selectedOptions });
+    return selectedOptions;
   }
 
 
@@ -38,13 +38,13 @@ export default class SearchItems extends Component {
       <div className="searchitems">
         <AsyncSelect
           isMulti
-          value={this.state.selectedOption}
+          value={this.state.selectedOptions}
           onChange={this.handleChange}
           loadOptions={this.getOptions}
         />
 
         <HoldItems
-          items={this.state.selectedOption}
+          items={this.state.selectedOptions}
         />
       </div>
     )
