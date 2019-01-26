@@ -31,6 +31,13 @@ export default class SearchItems extends Component {
     return selectedOptions;
   }
 
+  sendServing = (item) => {
+    if (this.state[item.label]) {
+      return item.carbs * this.state[item.label]
+    } else {
+      return item.carbs
+    }
+  }
 
 
   render() {
@@ -45,6 +52,7 @@ export default class SearchItems extends Component {
 
         <HoldItems
           items={this.state.selectedOptions}
+          sendServing={this.sendServing}
         />
       </div>
     )
