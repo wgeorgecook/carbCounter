@@ -3,32 +3,32 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Input } from '@material-ui/core';
+import TotalCarbs from './TotalCarbs';
 
 
 export default class HoldItems extends Component {
 
   state = {
+    items: []
   }
 
   updateServing = (e) => {
-
-    if (e.target.value !== "" && e.target.value >= 0) {
-      const key = e.target.id;
-      const value = e.target.value;
-      this.setState({ [key]: value })
-    } else {
-      const key = e.target.id;
-      const value = 1
-      this.setState({ [key]: value })
+    if ((this.state.items).length > 0) {
+      const target = e.target.id; // The item we need to update
+      const newServings = e.target.value // The value we update on the item
+      if (newServings !== "") {
+        this.setState( prevState => {
+          const newItems = [...prevState.items]
+          const filter = newItems.filter(item => item.value === target)[0] // The object that holds the item we need to update
+          const checkIdx = newItems.indexOf(filter) // The index of the item in the newItems array we need to update
+          newItems[checkIdx].servings = parseInt(newServings); // Set the servings value on the object to the value in the input
+          return {items: newItems}
+        })
+      }
     }
-  }
-
-  sendServing = (item) => {
-    if (this.state[item.label]) {
-      return item.carbs * this.state[item.label]
-    } else {
-      return item.carbs
-    }
+}
+  componentWillReceiveProps = (props) => {
+    this.setState({items: props.items})
   }
 
   render() {
@@ -44,27 +44,21 @@ export default class HoldItems extends Component {
                     secondary={item.carbs}
                   />
                   <Input
-                    className="servings"
                     type='number'
                     id={item.label}
+                    name={(item.carbs).toString()}
                     placeholder="Servings"
                     onChange={this.updateServing}
-                    defaultValue="1"
-                  />
-                  <ListItemText
-                    primary="Total"
-                    secondary={this.sendServing(item)}
+                    defaultValue="0"
                   />
                 </ListItem>
               )
               })}
 
-            <ListItem>
-              <ListItemText
-                  primary="Total carbs"
-                  secondary={ ( this.props.items.map(item => item.carbs).reduce( (add, item) => { return add + item }) ) }
-                />
-            </ListItem>
+              <TotalCarbs
+                sum={ [this.state] || null }
+              />
+
           </List>
         </div>
       : null
