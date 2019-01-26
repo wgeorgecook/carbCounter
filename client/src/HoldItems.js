@@ -23,6 +23,14 @@ export default class HoldItems extends Component {
     }
   }
 
+  sendServing = (item) => {
+    if (this.state[item.label]) {
+      return item.carbs * this.state[item.label]
+    } else {
+      return item.carbs
+    }
+  }
+
   render() {
     return (
       ((this.props.items).length > 0)
@@ -45,7 +53,7 @@ export default class HoldItems extends Component {
                   />
                   <ListItemText
                     primary="Total"
-                    secondary={( item.carbs * this.state[item.label] || item.carbs )}
+                    secondary={this.sendServing(item)}
                   />
                 </ListItem>
               )
