@@ -15,7 +15,7 @@ export default class SearchItems extends Component {
     const response = await fetch('/items');
     const json = await response.json();
     // This map function maps the returned data into an object array Async Select can read
-    this.setState({options: (json.data.map( obj => ({ value: obj.name, label: obj.name, carbs: obj.carbs })))})
+    this.setState({options: (json.data.map( obj => ( { value: obj.name, label: obj.name, carbs: obj.carbs, servings: 0 } )))})
     return this.filterOptions(input);
   }
 
@@ -31,14 +31,6 @@ export default class SearchItems extends Component {
     return selectedOptions;
   }
 
-  sendServing = (item) => {
-    if (this.state[item.label]) {
-      return item.carbs * this.state[item.label]
-    } else {
-      return item.carbs
-    }
-  }
-
 
   render() {
     return (
@@ -52,7 +44,6 @@ export default class SearchItems extends Component {
 
         <HoldItems
           items={this.state.selectedOptions}
-          sendServing={this.sendServing}
         />
       </div>
     )
