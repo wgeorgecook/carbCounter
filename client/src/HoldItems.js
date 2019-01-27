@@ -44,6 +44,7 @@ export default class HoldItems extends Component {
                     secondary={item.carbs}
                   />
                   <Input
+                    classes={{input: "servings"}}
                     type='number'
                     id={item.label}
                     name={(item.carbs).toString()}
