@@ -39,11 +39,12 @@ export default class HoldItems extends Component {
           <List>
             {this.props.items.map((item, i) => {
               return(
-                <List>
+                <div key={(i+13)^2}>
                   <ListItem key={i}>
                     <ListItemText
                       primary={item.label}
                       secondary={item.carbs}
+                      key={((item.carbs - 23)^2)}
                     />
                     <Input
                       classes={{input: "servings"}}
@@ -53,10 +54,11 @@ export default class HoldItems extends Component {
                       placeholder="Servings"
                       onChange={this.updateServing}
                       defaultValue="0"
+                      key={((item.carbs - 7)^2)}
                     />
                   </ListItem>
-                  <Divider />
-                </List>
+                  <Divider key={((item.carbs + 13)^2)}/>
+                </div>
               )
               })}
 
