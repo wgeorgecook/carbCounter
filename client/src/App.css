@@ -19,9 +19,14 @@
 }
 
 .top {
-  width: 33%;
+  width: 66%;
   margin: auto;
   margin-bottom: 2em;
+  margin-top: 2em;
+  text-align: center;
+  border: 1px grey solid;
+  padding: .75em;
+  border-radius: 4%;
 }
 
 .search {
@@ -32,4 +37,5 @@
   width: 66%;
   margin: auto;
   margin-bottom: 2em;
+  text-align: center;
 }
