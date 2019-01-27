@@ -56,7 +56,7 @@ export default class HoldItems extends Component {
               })}
 
               <TotalCarbs
-                sum={ [this.state] || null }
+                sum={ this.state.items || null }
               />
 
           </List>
