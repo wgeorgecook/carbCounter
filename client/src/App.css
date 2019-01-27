@@ -19,17 +19,11 @@
 }
 
 .top {
-  width: 66%;
   margin: auto;
+  height: auto;
   margin-bottom: 1em;
-  margin-top: 1em;
-  text-align: center;
-  border: 1px grey solid;
   padding: .5em;
-  border-radius: 4%;
-  background-color: rgb(48, 59, 166); /* Material UI button color */
-  color: white;
-  font-family: 'Roboto', sans-serif;
+  text-align: center;
 }
 
 .search {
