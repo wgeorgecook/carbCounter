@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Input } from '@material-ui/core';
+import { Input, Divider } from '@material-ui/core';
 import TotalCarbs from './TotalCarbs';
 
 
@@ -39,21 +39,24 @@ export default class HoldItems extends Component {
           <List>
             {this.props.items.map((item, i) => {
               return(
-                <ListItem key={i}>
-                  <ListItemText
-                    primary={item.label}
-                    secondary={item.carbs}
-                  />
-                  <Input
-                    classes={{input: "servings"}}
-                    type='number'
-                    id={item.label}
-                    name={(item.carbs).toString()}
-                    placeholder="Servings"
-                    onChange={this.updateServing}
-                    defaultValue="0"
-                  />
-                </ListItem>
+                <List>
+                  <ListItem key={i}>
+                    <ListItemText
+                      primary={item.label}
+                      secondary={item.carbs}
+                    />
+                    <Input
+                      classes={{input: "servings"}}
+                      type='number'
+                      id={item.label}
+                      name={(item.carbs).toString()}
+                      placeholder="Servings"
+                      onChange={this.updateServing}
+                      defaultValue="0"
+                    />
+                  </ListItem>
+                  <Divider />
+                </List>
               )
               })}
 
