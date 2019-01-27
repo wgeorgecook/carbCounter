@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <div className="root">
-        <div className="top">Welcome to Carb Counter</div>
+        <h1 className="top">Welcome to Carb Counter</h1>
         <div className="search"><SearchItems /></div>
       {(this.state.new === true)
         ?  <div className="newForm">
