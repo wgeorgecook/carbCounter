@@ -10,7 +10,6 @@ export default class TotalCarbs extends Component {
 
   componentWillReceiveProps = () => {
     const total = this.props.sum.map(item => (item.carbs * item.servings)).reduce( (sum, item) => { return sum + item } )
-    console.log(total)
     this.setState({ total })
   }
 
