@@ -55,7 +55,7 @@ export default class NewItem extends Component {
             <Input type='number' placeholder="Carbohydrates" id="carbs" value={ this.state.carbs }  onChange={ this.handleChange } required/>
           </FormControl>
           <div id="formButtons">
-            <span id="addNew">
+            <div id="addNew">
               <Button
                 variant="contained"
                 color="primary"
@@ -63,15 +63,15 @@ export default class NewItem extends Component {
                 form="newItemForm">
                   Add item
               </Button>
-            </span>
-            <span id="hideForm">
+            </div>
+            <div id="hideForm">
               <Button
                 variant="contained"
                 color="primary"
                 onClick={ this.props.onHideForm }>
                   Hide form
               </Button>
-            </span>
+            </div>
           </div>
         </form>
         <Snackbar
