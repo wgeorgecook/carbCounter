@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import { FormControl, Snackbar } from '@material-ui/core';
+import './NewItem.css'
 
 export default class NewItem extends Component {
 
@@ -53,8 +54,21 @@ export default class NewItem extends Component {
           <FormControl required>
             <Input type='number' placeholder="Carbohydrates" id="carbs" value={ this.state.carbs }  onChange={ this.handleChange } required/>
           </FormControl>
-          <Button variant="contained" color="primary" type='submit' form="newItemForm">Add item</Button>
-          <Button variant="contained" color="primary" onClick={ this.props.onHideForm }>Hide form</Button>
+          <div id="formButtons">
+            <Button
+              variant="contained"
+              color="primary"
+              type='submit'
+              form="newItemForm">
+                Add item
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={ this.props.onHideForm }>
+                Hide form
+            </Button>
+          </div>
         </form>
         <Snackbar
           message={<span id='message-id'>Successfully added item!</span>}
