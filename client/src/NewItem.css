@@ -3,5 +3,17 @@
 }
 
 #addNew {
-    margin-right: .5em;
+    width: 100%;
+    margin-left: auto;
+    margin-right: .25em;
+    margin-bottom: .5em;
+    display: block;
+}
+
+#hideForm {
+    width: 100%;
+    margin-right: auto;
+    margin-top: .5em;
+    margin-left: .25em;
+    display: block;
 }
