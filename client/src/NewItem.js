@@ -55,19 +55,23 @@ export default class NewItem extends Component {
             <Input type='number' placeholder="Carbohydrates" id="carbs" value={ this.state.carbs }  onChange={ this.handleChange } required/>
           </FormControl>
           <div id="formButtons">
-            <Button
-              variant="contained"
-              color="primary"
-              type='submit'
-              form="newItemForm">
-                Add item
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={ this.props.onHideForm }>
-                Hide form
-            </Button>
+            <span id="addNew">
+              <Button
+                variant="contained"
+                color="primary"
+                type='submit'
+                form="newItemForm">
+                  Add item
+              </Button>
+            </span>
+            <span id="hideForm">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={ this.props.onHideForm }>
+                  Hide form
+              </Button>
+            </span>
           </div>
         </form>
         <Snackbar
