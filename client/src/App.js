@@ -24,7 +24,7 @@ class App extends Component {
       <div className="root">
         <div className="top">
           <AppBar color="primary" position="static">
-            <h1 class="appBar">Welcome to Carb Counter </h1>
+            <h1 className="appBar">Welcome to Carb Counter </h1>
           </AppBar>
         </div>
         <div className="search"><SearchItems /></div>
