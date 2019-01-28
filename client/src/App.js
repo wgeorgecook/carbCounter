@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import SearchItems from './SearchItems';
-import Button from '@material-ui/core/Button';
 import NewItem from './NewItem';
 import './App.css';
-import { AppBar } from '@material-ui/core';
+import { AppBar, Fab } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 
 
 
@@ -33,12 +33,13 @@ class App extends Component {
             <NewItem onHideForm={ this.switchNew }/>
           </div>
         : <div className="addNew">
-            <Button
-              variant="contained"
+            <Fab
+              aria-label="Add"
               color="primary"
               className="addNew"
-              onClick={this.switchNew}>Add new item
-            </Button>
+              onClick={this.switchNew}>
+                <AddIcon />
+            </Fab>
           </div>
           }
       </div>
