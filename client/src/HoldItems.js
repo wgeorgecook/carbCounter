@@ -3,6 +3,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Input, Divider } from '@material-ui/core';
+import EditFood from './EditFood'
 import TotalCarbs from './TotalCarbs';
 
 
@@ -46,6 +47,7 @@ export default class HoldItems extends Component {
                       secondary={item.carbs}
                       key={((item.carbs - 23)^2)}
                     />
+                    <EditFood key={33*i*16}/>
                     <Input
                       classes={{input: "servings"}}
                       type='number'
