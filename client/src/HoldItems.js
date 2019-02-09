@@ -47,7 +47,7 @@ export default class HoldItems extends Component {
                       secondary={item.carbs}
                       key={((item.id)^2)}
                     />
-                    <EditFood key={-i}/>
+                    <EditFood key={-i} id={item.id}/>
                     <Input
                       classes={{input: "servings"}}
                       type='number'
