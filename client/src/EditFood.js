@@ -4,7 +4,8 @@ import Button from '@material-ui/core/Button';
 export default class EditFood extends Component {
 
   handleSubmit = () => {
-    console.log("Button push")
+    const id = this.props.id;
+    console.log(id)
   }
 
   render() {
