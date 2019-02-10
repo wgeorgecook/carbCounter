@@ -3,6 +3,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Input, Divider } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import EditFood from './EditFood'
 import TotalCarbs from './TotalCarbs';
 
@@ -29,6 +30,10 @@ export default class HoldItems extends Component {
       }
     }
 }
+
+openEdit = (e) => {
+  console.log(e.target)
+}
   componentWillReceiveProps = (props) => {
     this.setState({items: props.items})
   }
@@ -47,7 +52,15 @@ export default class HoldItems extends Component {
                       secondary={item.carbs}
                       key={((item.id)^2)}
                     />
-                    <EditFood key={-i} id={item.id}/>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      type='submit'
+                      onClick={this.openEdit}
+                      id={item.id}
+                      > Edit
+                    </Button>
+                    <EditFood key={-i} />
                     <Input
                       classes={{input: "servings"}}
                       type='number'
