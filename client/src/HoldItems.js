@@ -11,7 +11,8 @@ import TotalCarbs from './TotalCarbs';
 export default class HoldItems extends Component {
 
   state = {
-    items: []
+    items: [],
+    edit: false
   }
 
 
@@ -31,8 +32,10 @@ export default class HoldItems extends Component {
     }
 }
 
-openEdit = (e) => {
-  console.log(e.target)
+openEdit = () => {
+  (this.state.edit)
+    ? this.setState({edit: false})
+    : this.setState({edit: true})
 }
   componentWillReceiveProps = (props) => {
     this.setState({items: props.items})
@@ -60,7 +63,11 @@ openEdit = (e) => {
                       id={item.id}
                       > Edit
                     </Button>
-                    <EditFood key={-i} />
+                    <EditFood
+                      key={-i}
+                      open={this.state.edit}
+                      onClose={this.openEdit}
+                    />
                     <Input
                       classes={{input: "servings"}}
                       type='number'
