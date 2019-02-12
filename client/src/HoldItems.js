@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+/*
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+*/
 import { Input, Divider } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import EditFood from './EditFood'
 import TotalCarbs from './TotalCarbs';
-
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 export default class HoldItems extends Component {
 
@@ -41,6 +47,43 @@ openEdit = () => {
     this.setState({items: props.items})
   }
 
+  /* This render function uses a table to display data */
+  render() {
+    return (
+      ((this.props.items).length > 0)
+      ? <div className="heldItems">
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Item Name</TableCell>
+                <TableCell>Carbohydates (g)</TableCell>
+                <TableCell>Servings</TableCell>
+                <TableCell>Edit Item</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+            {this.props.items.map((item) => (
+              <TableRow>
+                <TableCell>{item.label}</TableCell>
+                <TableCell>{item.carbs}</TableCell>
+                <TableCell> <Input classes={{input: "servings"}} type='number' id={item.label} name={(item.carbs).toString()} placeholder="Servings" onChange={this.updateServing} defaultValue="0" key={((item.carbs)^item.id)}/></TableCell>
+                <TableCell>
+                  <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={item.id}>Edit</Button>
+                  <EditFood foodId={item.id} open={this.state.open} onClose={this.openEdit}/>
+                </TableCell>
+              </TableRow>
+            ))}
+            </TableBody>
+          </Table>
+          <TotalCarbs
+                sum={ this.state.items || null }
+          />
+        </div>
+      : null
+    )
+
+  }
+/* The render function below uses a list to display data.
   render() {
     return (
       ((this.props.items).length > 0)
@@ -94,4 +137,5 @@ openEdit = () => {
       : null
     )
   }
+  */
 }
