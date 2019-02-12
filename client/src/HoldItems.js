@@ -65,6 +65,7 @@ openEdit = () => {
                     </Button>
                     <EditFood
                       key={-i}
+                      foodId={item.id}
                       open={this.state.edit}
                       onClose={this.openEdit}
                     />

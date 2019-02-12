@@ -7,7 +7,10 @@ export default class EditFood extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({open: nextProps.open})
+    this.setState({
+      open: nextProps.open,
+      foodid: nextProps.foodId
+    })
   }
 
   render() {
