@@ -64,7 +64,7 @@ openEdit = () => {
             </TableHead>
             <TableBody>
             {this.props.items.map((item) => (
-              <TableRow>
+              <TableRow key={item.id}>
                 <TableCell>{item.label}</TableCell>
                 <TableCell>{item.carbs}</TableCell>
                 <TableCell> <Input classes={{input: "servings"}} type='number' id={item.label} name={(item.carbs).toString()} placeholder="Servings" onChange={this.updateServing} defaultValue="0" key={((item.carbs)^item.id)}/></TableCell>
