@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input } from '@material-ui/core';
+import { Input, Button } from '@material-ui/core';
 
 export default class EditFood extends Component {
 
@@ -21,7 +21,8 @@ export default class EditFood extends Component {
         ? <div id="editform">
             <Input id="newName" type='text' placeholder="New name"/>
             <Input id="newCarbs" type="number" placeholder="New carbs"/>
-            <button onClick={this.props.onClose}>x</button>
+            <Button variant="contained" color="secondary" onClick={this.props.onClose}>Close</Button>
+            <Button variant="contained" color="secondary" onClick={this.props.onSave}>Save</Button>
           </div>
         : null
         }
