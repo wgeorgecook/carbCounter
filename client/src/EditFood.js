@@ -4,7 +4,13 @@ import { Input, Button } from '@material-ui/core';
 export default class EditFood extends Component {
 
   state = {
-    open: false
+    open: false,
+    error: null,
+    success: null
+  }
+
+  updateFood = () => {
+    console.log(this.props.foodId)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,7 +28,7 @@ export default class EditFood extends Component {
             <Input id="newName" type='text' placeholder="New name"/>
             <Input id="newCarbs" type="number" placeholder="New carbs"/>
             <Button variant="contained" color="secondary" onClick={this.props.onClose}>Close</Button>
-            <Button variant="contained" color="secondary" onClick={this.props.onSave}>Save</Button>
+            <Button variant="contained" color="secondary" onClick={this.updateFood}>Save</Button>
           </div>
         : null
         }
