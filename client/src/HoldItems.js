@@ -69,7 +69,9 @@ openEdit = () => {
                 <TableCell>{item.carbs}</TableCell>
                 <TableCell> <Input classes={{input: "servings"}} type='number' id={item.label} name={(item.carbs).toString()} placeholder="Servings" onChange={this.updateServing} defaultValue="0" key={((item.carbs)^item.id)}/></TableCell>
                 <TableCell>
-                  <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={item.id}>Edit</Button>
+                  {(!this.state.edit)
+                  ? <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={item.id}>Edit</Button>
+                  : null}
                   <EditFood foodId={item.id} open={this.state.edit} onClose={this.openEdit}/>
                 </TableCell>
               </TableRow>
