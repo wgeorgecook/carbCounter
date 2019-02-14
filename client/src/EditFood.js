@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
-import { Input, Button } from '@material-ui/core';
+import { Input, Button, FormControl } from '@material-ui/core';
 
 export default class EditFood extends Component {
 
   state = {
     open: false,
+    newName: null,
+    newCarbs: null,
     error: null,
     success: null
+  }
+
+  handleChange = (e) => {
+    const key = e.target.id;
+    const value = e.target.value;
+    console.log(`ID: ${key} Value: ${value}`)
+    this.setState({ [key]: value })
   }
 
   updateFood = () => {
@@ -24,12 +33,16 @@ export default class EditFood extends Component {
     return (
       <div className="editfood">
         {(this.state.open)
-        ? <div id="editform">
-            <Input id="newName" type='text' placeholder="New name"/>
-            <Input id="newCarbs" type="number" placeholder="New carbs"/>
-            <Button variant="contained" color="secondary" onClick={this.props.onClose}>Close</Button>
-            <Button variant="contained" color="secondary" onClick={this.updateFood}>Save</Button>
-          </div>
+        ? <form id="editform">
+            <FormControl>
+              <Input id="newName" type='text' placeholder="New name" onChange={ this.handleChange }/>
+            </FormControl>
+            <FormControl>
+              <Input id="newCarbs" type="number" placeholder="New carbs" onChange={ this.handleChange }/>
+            </FormControl>
+            <Button variant="contained" color="secondary" form="editform" onClick={this.props.onClose}>Close</Button>
+            <Button variant="contained" color="secondary" form="editform" onClick={this.updateFood}>Save</Button>
+          </form>
         : null
         }
       </div>
