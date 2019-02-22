@@ -17,14 +17,22 @@ export default class EditFood extends Component {
     this.setState({ [key]: value })
   }
 
-  updateFood = () => {
-    console.log(this.props.foodId)
+  updateFood = (e) => {
+    console.log(e.target);
+    e.preventDefault();
+    let { newName, newCarbs } = this.state;
+    if (!newName) { newName = this.state.name }
+    if (!newCarbs) { newCarbs = this.state.carbs }
+    console.log(newName)
+    console.log(newCarbs)
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       open: nextProps.open,
-      foodid: nextProps.foodId
+      foodid: nextProps.foodId,
+      name: nextProps.name,
+      carbs: nextProps.carbs
     })
   }
 
