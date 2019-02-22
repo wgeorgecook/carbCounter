@@ -14,7 +14,6 @@ export default class EditFood extends Component {
   handleChange = (e) => {
     const key = e.target.id;
     const value = e.target.value;
-    console.log(`ID: ${key} Value: ${value}`)
     this.setState({ [key]: value })
   }
 
