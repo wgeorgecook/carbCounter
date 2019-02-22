@@ -40,7 +40,7 @@ export default class EditFood extends Component {
               <Input id="newCarbs" type="number" placeholder="New carbs" onChange={ this.handleChange }/>
             </FormControl>
             <Button variant="contained" color="secondary" form="editform" onClick={this.props.onClose}>Close</Button>
-            <Button variant="contained" color="secondary" form="editform" onClick={this.updateFood}>Save</Button>
+            <Button variant="contained" color="secondary" form="editform" onClick={this.updateFood} type="submit">Save</Button>
           </form>
         : null
         }
