@@ -28,8 +28,8 @@ export default class EditFood extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ _id: foodid, update: { name: newName, carbs: newCarbs }} )
     })
-    .then(res => console.log(res.json()))
-    // .then(res => res.json())
+    // .then(res => console.log(res.json()))
+    .then(res => res.json())
     .then( res => {
       if(!res.success) this.setState( { error: res.error.message || res.error });
       else this.setState( { newName: "", newCarbs: "", error: null, success: true })
