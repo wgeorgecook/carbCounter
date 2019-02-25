@@ -32,10 +32,9 @@ export default class NewItem extends Component {
     })
     .then(res => res.json())
     .then( res => {
-      if(!res.success) this.setState( { error: res.error.message || res.error });
-      else this.setState( { name: "", carbs: "", error: null, success: true })
+      if(!res.success) this.setState( { error: res.error.message || res.error }, this.props.onHideForm);
+      else this.setState( { name: "", carbs: "", error: null, success: true }, this.props.onGoodSave)
     })
-    .then(this.props.onHideForm)
   }
 
 
