@@ -24,7 +24,7 @@ export default class EditFood extends Component {
     if (!newCarbs) { newCarbs = this.state.carbs } // No change in carbs
     if (newName === this.state.name && newCarbs === this.state.carbs) { return alert("No changes made") }; // No change in either carbs or name
     fetch('/updateData', {
-      method: 'PUT',
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ _id: foodid, update: { name: newName, carbs: newCarbs }} )
     })
