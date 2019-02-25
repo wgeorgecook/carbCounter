@@ -58,8 +58,10 @@ router.post('/items', (req, res) => {
 
 // Edit items on the db
 router.post('/updateData', (req, res) => {
-    const { id, update } = req.body;
-    Item.findOneAndUpdate((id, update, err) => {
+    const { _id, update } = req.body;
+    console.log(_id)
+    console.log(update)
+    Item.findOneAndUpdate(_id, update, err => {
         if (err) return res.json( {success: false, error: err.message });
         return res.json({success: true})
     })
