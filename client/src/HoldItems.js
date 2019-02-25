@@ -29,7 +29,8 @@ export default class HoldItems extends Component {
         })
       }
     }
-}
+  }
+
 
 
   componentWillReceiveProps = (props) => {
@@ -64,7 +65,7 @@ export default class HoldItems extends Component {
             </TableBody>
           </Table>
           <TotalCarbs
-                sum={ this.state.items || null }
+                sum={ this.state.items.map(item => (item.carbs * item.servings)).reduce( (sum, item) => { return sum + item }) || 0 }
           />
         </div>
       : null

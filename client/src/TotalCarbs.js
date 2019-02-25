@@ -4,15 +4,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 export default class TotalCarbs extends Component {
 
-  state = {
-    total: 0
-  }
-
-  componentWillReceiveProps = () => {
-    const total = this.props.sum.map(item => (item.carbs * item.servings)).reduce( (sum, item) => { return sum + item } )
-    this.setState({ total })
-  }
-
   render() {
 
     return (
@@ -20,7 +11,7 @@ export default class TotalCarbs extends Component {
           <ListItem>
             <ListItemText
                 primary="Total carbs"
-                secondary={ this.state.total }
+                secondary={ this.props.sum }
               />
           </ListItem>
       </div>
