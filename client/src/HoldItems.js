@@ -72,7 +72,7 @@ openEdit = () => {
                   {(!this.state.edit)
                   ? <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={item.id}>Edit</Button>
                   : null}
-                  <EditFood foodId={item.id} name={item.label} carbs={item.carbs} open={this.state.edit} onClose={this.openEdit}/>
+                  <EditFood foodId={item.id} name={item.label} carbs={item.carbs} open={this.state.edit} onClose={this.openEdit} onEdit={this.props.onEdit}/>
                 </TableCell>
               </TableRow>
             ))}

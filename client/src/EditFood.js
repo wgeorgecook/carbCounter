@@ -39,6 +39,7 @@ export default class EditFood extends Component {
       else this.setState( { newName: "", newCarbs: "", error: null, success: true })
     })
     .then(this.props.onClose)
+    .then(this.props.onEdit( { value: newName, label: newName, carbs: newCarbs, servings: 0, id: foodid } ))
   }
 
   componentWillReceiveProps(nextProps) {
