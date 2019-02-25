@@ -61,7 +61,7 @@ router.post('/updateData', (req, res) => {
     const { _id, update } = req.body;
     console.log(_id)
     console.log(update)
-    Item.findOneAndUpdate(_id, update, err => {
+    Item.findByIdAndUpdate(_id, update, err => {
         if (err) return res.json( {success: false, error: err.message });
         return res.json({success: true})
     })
