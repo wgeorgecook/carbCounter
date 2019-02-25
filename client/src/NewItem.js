@@ -69,7 +69,7 @@ export default class NewItem extends Component {
                 variant="contained"
                 color="primary"
                 onClick={ this.props.onHideForm }>
-                  Hide form
+                  Hide
               </Button>
             </div>
           </div>
