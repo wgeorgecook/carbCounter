@@ -29,7 +29,8 @@ export default class EditFood extends Component {
 
   updateFood = (e) => {
     e.preventDefault();
-    let { foodid, newName, newCarbs } = this.state;
+    const foodid = this.props.foodID
+    let { newName, newCarbs } = this.state;
     if (!newName) { newName = this.state.name } // No change in name
     if (!newCarbs) { newCarbs = this.state.carbs } // No change in carbs
     if (newName === this.state.name && newCarbs === this.state.carbs) { return alert("No changes made") }; // No change in either carbs or name
@@ -74,7 +75,7 @@ export default class EditFood extends Component {
         : <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={this.props.foodId}>Edit</Button>
         }
         <Snackbar
-          message={<span id='message-id'>Successfully updated item {this.props.foodID}!</span>}
+          message={<span id='message-id'>Successfully updated item {this.props.foodId}!</span>}
           open={this.state.success}
           onClose={this.closeSnack}
           autoHideDuration={6000}
