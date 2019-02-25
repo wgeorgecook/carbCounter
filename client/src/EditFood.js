@@ -34,6 +34,7 @@ export default class EditFood extends Component {
       if(!res.success) this.setState( { error: res.error.message || res.error });
       else this.setState( { newName: "", newCarbs: "", error: null, success: true })
     })
+    .then(this.props.onClose)
   }
 
   componentWillReceiveProps(nextProps) {
