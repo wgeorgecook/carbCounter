@@ -56,6 +56,17 @@ router.post('/items', (req, res) => {
     });
 });
 
+// Edit items on the db
+router.post('/updateData', (req, res) => {
+    const { _id, update } = req.body;
+    console.log(_id)
+    console.log(update)
+    Item.findByIdAndUpdate(_id, update, err => {
+        if (err) return res.json( {success: false, error: err.message });
+        return res.json({success: true})
+    })
+})
+
 // User router config when we call /api
 app.use('/api', router);
 

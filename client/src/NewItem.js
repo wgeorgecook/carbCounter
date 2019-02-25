@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
-import { FormControl, Snackbar } from '@material-ui/core';
+import { FormControl } from '@material-ui/core';
 import './NewItem.css'
 
 export default class NewItem extends Component {
@@ -20,11 +20,6 @@ export default class NewItem extends Component {
     this.setState({ [key]: value })
   }
 
-  closeSnack = () => {
-    this.setState( { success: null })
-  }
-
-
   submitItem = (e) => {
     console.log(e.target);
     e.preventDefault();
@@ -37,8 +32,8 @@ export default class NewItem extends Component {
     })
     .then(res => res.json())
     .then( res => {
-      if(!res.success) this.setState( { error: res.error.message || res.error });
-      else this.setState( { name: "", carbs: "", error: null, success: true })
+      if(!res.success) this.setState( { error: res.error.message || res.error }, this.props.onHideForm);
+      else this.setState( { name: "", carbs: "", error: null, success: true }, this.props.onGoodSave)
     })
   }
 
@@ -69,21 +64,11 @@ export default class NewItem extends Component {
                 variant="contained"
                 color="primary"
                 onClick={ this.props.onHideForm }>
-                  Hide form
+                  Hide
               </Button>
             </div>
           </div>
         </form>
-        <Snackbar
-          message={<span id='message-id'>Successfully added item!</span>}
-          open={this.state.success}
-          onClose={this.closeSnack}
-          autoHideDuration={6000}
-          anchorOrigin={ {
-            vertical: 'bottom',
-            horizontal: 'left'
-          }}
-        />
       </div>
     )
   }

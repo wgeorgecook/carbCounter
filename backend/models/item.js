@@ -7,6 +7,7 @@ import mongoose, { Schema } from 'mongoose'
 const ItemSchema = new Schema({
         name: String,
         carbs: Number,
+        itemID: String
     }
 );
 

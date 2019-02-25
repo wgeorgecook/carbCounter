@@ -15,7 +15,7 @@ export default class SearchItems extends Component {
     const response = await fetch('/items');
     const json = await response.json();
     // This map function maps the returned data into an object array Async Select can read
-    this.setState({options: (json.data.map( obj => ( { value: obj.name, label: obj.name, carbs: obj.carbs, servings: 0 } )))})
+    this.setState({options: (json.data.map( obj => ( { value: obj.name, label: obj.name, carbs: obj.carbs, servings: 0, id: obj._id } )))})
     return this.filterOptions(input);
   }
 
@@ -31,6 +31,16 @@ export default class SearchItems extends Component {
     return selectedOptions;
   }
 
+  updateSearch = (item) => {
+    this.setState( prevState => {
+      const newSelectedOptions = [...prevState.selectedOptions]
+      const filter = newSelectedOptions.filter(options => options.id === item.id)[0] // The object that holds the item we need to update
+      const checkIdx = newSelectedOptions.indexOf(filter) // The index of the item in the newSelectedOptions array we need to update
+      newSelectedOptions[checkIdx] = item // Change the object to our updated object
+      return {selectedOptions: newSelectedOptions}
+      })
+  }
+
 
   render() {
     return (
@@ -44,6 +54,7 @@ export default class SearchItems extends Component {
 
         <HoldItems
           items={this.state.selectedOptions}
+          onEdit={this.updateSearch}
         />
       </div>
     )

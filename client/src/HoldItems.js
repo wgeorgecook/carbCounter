@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { Input, Divider } from '@material-ui/core';
+import { Input } from '@material-ui/core';
+import EditFood from './EditFood'
 import TotalCarbs from './TotalCarbs';
-
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 export default class HoldItems extends Component {
 
   state = {
-    items: []
+    items: [],
   }
 
 
   updateServing = (e) => {
-    if ((this.state.items).length > 0 && e.target.value > 0) {
+    if ((this.state.items).length > 0 && e.target.value >= 0) {
       const target = e.target.id; // The item we need to update
       const newServings = e.target.value // The value we update on the item
       if (newServings !== "") {
@@ -28,47 +30,45 @@ export default class HoldItems extends Component {
       }
     }
 }
+
+
   componentWillReceiveProps = (props) => {
     this.setState({items: props.items})
   }
 
+  /* This render function uses a table to display data */
   render() {
     return (
       ((this.props.items).length > 0)
       ? <div className="heldItems">
-          <List>
-            {this.props.items.map((item, i) => {
-              return(
-                <div key={(i+13)^2}>
-                  <ListItem key={i}>
-                    <ListItemText
-                      primary={item.label}
-                      secondary={item.carbs}
-                      key={((item.carbs - 23)^2)}
-                    />
-                    <Input
-                      classes={{input: "servings"}}
-                      type='number'
-                      id={item.label}
-                      name={(item.carbs).toString()}
-                      placeholder="Servings"
-                      onChange={this.updateServing}
-                      defaultValue="0"
-                      key={((item.carbs - 7)^2)}
-                    />
-                  </ListItem>
-                  <Divider key={((item.carbs + 13)^2)}/>
-                </div>
-              )
-              })}
-
-              <TotalCarbs
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Item Name</TableCell>
+                <TableCell>Carbohydates (g)</TableCell>
+                <TableCell>Servings</TableCell>
+                <TableCell>Edit Item</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+            {this.props.items.map((item) => (
+              <TableRow key={item.id}>
+                <TableCell>{item.label}</TableCell>
+                <TableCell>{item.carbs}</TableCell>
+                <TableCell> <Input classes={{input: "servings"}} type='number' id={item.label} name={(item.carbs).toString()} placeholder="Servings" onChange={this.updateServing} defaultValue="0" key={((item.carbs)^item.id)}/></TableCell>
+                <TableCell>
+                  <EditFood foodId={item.id} name={item.label} carbs={item.carbs} onEdit={this.props.onEdit}/>
+                </TableCell>
+              </TableRow>
+            ))}
+            </TableBody>
+          </Table>
+          <TotalCarbs
                 sum={ this.state.items || null }
-              />
-
-          </List>
+          />
         </div>
       : null
     )
+
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SearchItems from './SearchItems';
 import NewItem from './NewItem';
 import './App.css';
-import { AppBar, Fab, Tooltip } from '@material-ui/core';
+import { AppBar, Fab, Tooltip, Snackbar } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
 
@@ -10,13 +10,24 @@ import AddIcon from '@material-ui/icons/Add';
 
 class App extends Component {
   state = {
-    new: false
+    new: false,
+    success: null
   }
 
   switchNew = () => {
     (this.state.new)
     ? this.setState({new: false})
     : this.setState({new: true});
+  }
+
+  goodSave = () => {
+    (this.state.new)
+    ? this.setState({new: false, success: true})
+    : this.setState({new: true});
+  }
+
+  closeSnack = () => {
+    this.setState( { success: null })
   }
 
   render() {
@@ -30,7 +41,7 @@ class App extends Component {
         <div className="search"><SearchItems /></div>
       {(this.state.new === true)
         ?  <div className="newForm">
-            <NewItem onHideForm={ this.switchNew }/>
+            <NewItem onHideForm={ this.switchNew } onGoodSave={ this.goodSave }/>
           </div>
         : <div className="addNew">
             <Tooltip title="Add" aria-label="Add">
@@ -42,6 +53,16 @@ class App extends Component {
                   <AddIcon />
               </Fab>
             </Tooltip>
+            <Snackbar
+              message={<span id='message-id'>Successfully added item!</span>}
+              open={this.state.success}
+              onClose={this.closeSnack}
+              autoHideDuration={6000}
+              anchorOrigin={ {
+                vertical: 'bottom',
+                horizontal: 'left'
+              }}
+            />
           </div>
           }
       </div>
