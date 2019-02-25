@@ -18,24 +18,22 @@ export default class EditFood extends Component {
   }
 
   updateFood = (e) => {
-    console.log(e.target);
     e.preventDefault();
-    let { newName, newCarbs } = this.state;
+    let { foodid, newName, newCarbs } = this.state;
     if (!newName) { newName = this.state.name } // No change in name
     if (!newCarbs) { newCarbs = this.state.carbs } // No change in carbs
     if (newName === this.state.name && newCarbs === this.state.carbs) { return alert("No changes made") }; // No change in either carbs or name
-    /*
-    fetch('/items', {
-      method: 'POST',
+    fetch('/updateData', {
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ newName, newCarbs }),
+      body: JSON.stringify({ _id: foodid, update: { name: newName, carbs: newCarbs }} )
     })
-    .then(res => res.json())
+    .then(res => console.log(res.json()))
+    // .then(res => res.json())
     .then( res => {
       if(!res.success) this.setState( { error: res.error.message || res.error });
       else this.setState( { newName: "", newCarbs: "", error: null, success: true })
     })
-    */
   }
 
   componentWillReceiveProps(nextProps) {
