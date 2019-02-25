@@ -24,7 +24,7 @@ export default class HoldItems extends Component {
 
 
   updateServing = (e) => {
-    if ((this.state.items).length > 0 && e.target.value > 0) {
+    if ((this.state.items).length > 0 && e.target.value >= 0) {
       const target = e.target.id; // The item we need to update
       const newServings = e.target.value // The value we update on the item
       if (newServings !== "") {
