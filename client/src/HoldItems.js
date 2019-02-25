@@ -6,7 +6,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Input, Divider } from '@material-ui/core';
 */
 import { Input } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
 import EditFood from './EditFood'
 import TotalCarbs from './TotalCarbs';
 import Table from '@material-ui/core/Table';
@@ -39,11 +38,7 @@ export default class HoldItems extends Component {
     }
 }
 
-openEdit = () => {
-  (this.state.edit)
-    ? this.setState({edit: false})
-    : this.setState({edit: true})
-}
+
   componentWillReceiveProps = (props) => {
     this.setState({items: props.items})
   }
@@ -69,10 +64,7 @@ openEdit = () => {
                 <TableCell>{item.carbs}</TableCell>
                 <TableCell> <Input classes={{input: "servings"}} type='number' id={item.label} name={(item.carbs).toString()} placeholder="Servings" onChange={this.updateServing} defaultValue="0" key={((item.carbs)^item.id)}/></TableCell>
                 <TableCell>
-                  {(!this.state.edit)
-                  ? <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={item.id}>Edit</Button>
-                  : null}
-                  <EditFood foodId={item.id} name={item.label} carbs={item.carbs} open={this.state.edit} onClose={this.openEdit} onEdit={this.props.onEdit}/>
+                  <EditFood foodId={item.id} name={item.label} carbs={item.carbs} onEdit={this.props.onEdit}/>
                 </TableCell>
               </TableRow>
             ))}

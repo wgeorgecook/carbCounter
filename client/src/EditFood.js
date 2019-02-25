@@ -21,6 +21,12 @@ export default class EditFood extends Component {
     this.setState( { success: null })
   }
 
+  openEdit = () => {
+    (this.state.open)
+      ? this.setState({open: false})
+      : this.setState({open: true})
+  }
+
   updateFood = (e) => {
     e.preventDefault();
     let { foodid, newName, newCarbs } = this.state;
@@ -62,10 +68,10 @@ export default class EditFood extends Component {
             <FormControl>
               <Input id="newCarbs" type="number" placeholder="New carbs" onChange={ this.handleChange }/>
             </FormControl>
-            <Button variant="contained" color="secondary" form="editform" onClick={this.props.onClose}>Close</Button>
+            <Button variant="contained" color="secondary" form="editform" onClick={this.openEdit}>Close</Button>
             <Button variant="contained" color="secondary" form="editform" onClick={this.updateFood} type="submit">Save</Button>
           </form>
-        : null
+        : <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={this.props.foodId}>Edit</Button>
         }
         <Snackbar
           message={<span id='message-id'>Successfully updated item!</span>}
