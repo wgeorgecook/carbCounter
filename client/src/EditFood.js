@@ -45,6 +45,7 @@ export default class EditFood extends Component {
       if(!res.success) this.setState( { error: res.error.message || res.error });
       else this.setState( { newName: null, newCarbs: null, error: null, success: true })
     })
+    .then(this.openEdit)
     .then(this.props.onEdit( { value: newName, label: newName, carbs: newCarbs, servings: 0, id: foodid } ))
   }
 
