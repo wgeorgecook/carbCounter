@@ -16,6 +16,12 @@ class App extends Component {
 
   switchNew = () => {
     (this.state.new)
+    ? this.setState({new: false})
+    : this.setState({new: true});
+  }
+
+  goodSave = () => {
+    (this.state.new)
     ? this.setState({new: false, success: true})
     : this.setState({new: true});
   }
@@ -35,7 +41,7 @@ class App extends Component {
         <div className="search"><SearchItems /></div>
       {(this.state.new === true)
         ?  <div className="newForm">
-            <NewItem onHideForm={ this.switchNew }/>
+            <NewItem onHideForm={ this.switchNew } onGoodSave={ this.goodSave }/>
           </div>
         : <div className="addNew">
             <Tooltip title="Add" aria-label="Add">
