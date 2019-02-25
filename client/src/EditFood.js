@@ -29,10 +29,10 @@ export default class EditFood extends Component {
 
   updateFood = (e) => {
     e.preventDefault();
-    const foodid = this.props.foodID
+    const foodid = this.props.foodId
     let { newName, newCarbs } = this.state;
-    if (!newName) { newName = this.state.name } // No change in name
-    if (!newCarbs) { newCarbs = this.state.carbs } // No change in carbs
+    if (!newName) { newName = this.props.name } // No change in name
+    if (!newCarbs) { newCarbs = this.props.carbs } // No change in carbs
     if (newName === this.state.name && newCarbs === this.state.carbs) { return alert("No changes made") }; // No change in either carbs or name
     fetch('/updateData', {
       method: 'POST',
@@ -50,7 +50,6 @@ export default class EditFood extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      open: nextProps.open,
       foodid: nextProps.foodId,
       name: nextProps.name,
       carbs: nextProps.carbs
