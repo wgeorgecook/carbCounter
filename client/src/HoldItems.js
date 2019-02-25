@@ -18,7 +18,6 @@ export default class HoldItems extends Component {
 
   state = {
     items: [],
-    edit: false
   }
 
 
