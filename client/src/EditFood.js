@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button, FormControl } from '@material-ui/core';
+import { Input, Button, FormControl, Snackbar } from '@material-ui/core';
 
 export default class EditFood extends Component {
 
@@ -15,6 +15,10 @@ export default class EditFood extends Component {
     const key = e.target.id;
     const value = e.target.value;
     this.setState({ [key]: value })
+  }
+
+  closeSnack = () => {
+    this.setState( { success: null })
   }
 
   updateFood = (e) => {
@@ -62,6 +66,16 @@ export default class EditFood extends Component {
           </form>
         : null
         }
+        <Snackbar
+          message={<span id='message-id'>Successfully updated item!</span>}
+          open={this.state.success}
+          onClose={this.closeSnack}
+          autoHideDuration={6000}
+          anchorOrigin={ {
+            vertical: 'bottom',
+            horizontal: 'left'
+          }}
+        />
       </div>
     )
   }
