@@ -74,7 +74,7 @@ export default class EditFood extends Component {
         : <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={this.props.foodId}>Edit</Button>
         }
         <Snackbar
-          message={<span id='message-id'>Successfully updated item!</span>}
+          message={<span id='message-id'>Successfully updated item {this.props.foodID}!</span>}
           open={this.state.success}
           onClose={this.closeSnack}
           autoHideDuration={6000}
