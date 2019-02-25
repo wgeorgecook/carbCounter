@@ -36,7 +36,7 @@ export default class SearchItems extends Component {
       const newSelectedOptions = [...prevState.selectedOptions]
       const filter = newSelectedOptions.filter(options => options.id === item.id)[0] // The object that holds the item we need to update
       const checkIdx = newSelectedOptions.indexOf(filter) // The index of the item in the newSelectedOptions array we need to update
-      newSelectedOptions[checkIdx] = item; // Change the object to our updated object
+      newSelectedOptions[checkIdx] = item // Change the object to our updated object
       return {selectedOptions: newSelectedOptions}
       })
   }
