@@ -43,9 +43,8 @@ export default class EditFood extends Component {
     .then(res => res.json())
     .then( res => {
       if(!res.success) this.setState( { error: res.error.message || res.error });
-      else this.setState( { newName: "", newCarbs: "", error: null, success: true })
+      else this.setState( { newName: null, newCarbs: null, error: null, success: true })
     })
-    .then(this.props.onClose)
     .then(this.props.onEdit( { value: newName, label: newName, carbs: newCarbs, servings: 0, id: foodid } ))
   }
 
