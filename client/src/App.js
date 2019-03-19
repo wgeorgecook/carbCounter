@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { AppBar } from '@material-ui/core';
-import Authentication from './Authentication';
 import Home from './Home'
-// import { Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
+import awsmobile from './aws-exports';
+import { withAuthenticator } from 'aws-amplify-react'; // or 'aws-amplify-react-native';
 import './App.css';
 
-
+Amplify.configure(awsmobile);
 
 class App extends Component {
   state = {
@@ -25,14 +26,10 @@ class App extends Component {
             <h1 className="appBar">Welcome to Carb Counter </h1>
           </AppBar>
         </div>
-        {
-          (!this.state.loggedIn)
-          ? <Authentication />
-          : <Home />
-        }
+        <Home />
       </div>
     );
   }
 }
 
-export default App;
+export default withAuthenticator(App, true);
