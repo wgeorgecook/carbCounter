@@ -34,7 +34,7 @@ export default class EditFood extends Component {
     if (!newName) { newName = this.props.name } // No change in name
     if (!newCarbs) { newCarbs = this.props.carbs } // No change in carbs
     if (newName === this.state.name && newCarbs === this.state.carbs) { return alert("No changes made") }; // No change in either carbs or name
-    fetch('/updateData', {
+    fetch('http://superstubby.ddns.net:3001/api/updateData', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ _id: foodid, update: { name: newName, carbs: newCarbs }} )

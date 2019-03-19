@@ -25,7 +25,7 @@ export default class NewItem extends Component {
     e.preventDefault();
     const { name, carbs } = this.state;
     if (!name || !carbs) return;
-    fetch('/items', {
+    fetch('http://superstubby.ddns.net:3001/api/items', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, carbs }),

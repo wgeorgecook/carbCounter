@@ -12,7 +12,7 @@ export default class AllItems extends Component {
   }
 
   loadAllItems = () => {
-    fetch('/items')
+    fetch('http://superstubby.ddns.net:3001/api/items')
     .then( res => res.json() )
     .then( res =>  {
       if (!res.success) this.setState({ error: res.error })
