@@ -12,7 +12,7 @@ export default class SearchItems extends Component {
 
 
   getOptions = async (input) => {
-    const response = await fetch('/items');
+    const response = await fetch('http://superstubby.ddns.net:3001/api/items');
     const json = await response.json();
     // This map function maps the returned data into an object array Async Select can read
     this.setState({options: (json.data.map( obj => ( { value: obj.name, label: obj.name, carbs: obj.carbs, servings: 0, id: obj._id } )))})

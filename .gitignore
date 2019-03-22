@@ -1,4 +1,5 @@
 secrets.js
 node_modules
 .DS_Store
+client/amplify/backend
 usda-secrets.js

@@ -1,0 +1,31 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "carbcounter-20190318174806-authRole",
+            "UnauthRoleArn": "arn:aws:iam::354743361402:role/carbcounter-20190318174806-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::354743361402:role/carbcounter-20190318174806-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "carbcounter-20190318174806-deployment",
+            "UnauthRoleName": "carbcounter-20190318174806-unauthRole",
+            "StackName": "carbcounter-20190318174806",
+            "StackId": "arn:aws:cloudformation:eu-west-1:354743361402:stack/carbcounter-20190318174806/a9e85b70-49e0-11e9-b1ab-0ade9df0c35e"
+        }
+    },
+    "test": {
+        "awscloudformation": {
+            "AuthRoleName": "carbcounter-20190318211658-authRole",
+            "UnauthRoleArn": "arn:aws:iam::354743361402:role/carbcounter-20190318211658-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::354743361402:role/carbcounter-20190318211658-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "carbcounter-20190318211658-deployment",
+            "UnauthRoleName": "carbcounter-20190318211658-unauthRole",
+            "StackName": "carbcounter-20190318211658",
+            "StackId": "arn:aws:cloudformation:eu-west-1:354743361402:stack/carbcounter-20190318211658/d6f70fe0-49fd-11e9-9912-0ac6bcaf6240"
+        },
+        "categories": {
+            "auth": {
+                "cognito628da061": {}
+            }
+        }
+    }
+}
