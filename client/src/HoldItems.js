@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Input } from '@material-ui/core';
+import { Input, Card, CardContent, CardActions, Grid } from '@material-ui/core';
 import EditFood from './EditFood'
 import TotalCarbs from './TotalCarbs';
+/*
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+*/
 
 export default class HoldItems extends Component {
 
@@ -37,7 +39,34 @@ export default class HoldItems extends Component {
     this.setState({items: props.items})
   }
 
-  /* This render function uses a table to display data */
+  /* testing cards */
+  render() {
+    return (
+      ((this.props.items).length > 0)
+      ? <div className="heldItems">
+        <Grid container>
+          {this.props.items.map((item) => (
+            <Card key={item.id}>
+              <CardContent>
+                {item.label} <br/>
+                {item.carbs} Carbohydates (g) <br/>
+                Servings: <Input classes={{input: "servings"}} type='number' id={item.label} name={(item.carbs).toString()} placeholder="Servings" onChange={this.updateServing} defaultValue="0" fullWidth={false}/>
+              </CardContent>
+              <CardActions>
+                <EditFood foodId={item.id} name={item.label} carbs={item.carbs} onEdit={this.props.onEdit}/>
+              </CardActions>
+            </Card>
+          ))}
+        </Grid>
+          <TotalCarbs
+            sum={ this.state.items.map(item => (item.carbs * item.servings)).reduce( (sum, item) => { return sum + item }) || 0 }
+          />
+        </div>
+      : null
+    )
+  }
+}
+  /* This render function uses a table to display data
   render() {
     return (
       ((this.props.items).length > 0)
@@ -73,3 +102,4 @@ export default class HoldItems extends Component {
 
   }
 }
+*/
