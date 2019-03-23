@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Input, Card, CardContent, CardActions, Grid } from '@material-ui/core';
+import { Card, CardContent, CardActions, Grid, NativeSelect } from '@material-ui/core';
 import EditFood from './EditFood'
 import TotalCarbs from './TotalCarbs';
+
 /*
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -50,7 +51,18 @@ export default class HoldItems extends Component {
               <CardContent>
                 {item.label} <br/>
                 {item.carbs} Carbohydates (g) <br/>
-                Servings: <Input classes={{input: "servings"}} type='number' id={item.label} name={(item.carbs).toString()} placeholder="Servings" onChange={this.updateServing} defaultValue="0" fullWidth={false}/>
+                Servings:
+                <NativeSelect
+                  inputProps={{
+                    id: item.label,
+                    name:(item.carbs).toString()
+                    }}
+                  onChange={this.updateServing}
+                >
+                {[...Array(10).keys()].map( num => (
+                  <option value={num} key={num}>{num}</option>
+                ))}
+                </NativeSelect>
               </CardContent>
               <CardActions>
                 <EditFood foodId={item.id} name={item.label} carbs={item.carbs} onEdit={this.props.onEdit}/>
