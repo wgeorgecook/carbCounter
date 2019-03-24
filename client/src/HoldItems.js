@@ -18,7 +18,8 @@ export default class HoldItems extends Component {
   }
 
   cardStyle = {
-    margin: '10px'
+    margin: '16px',
+    width: '200px'
   }
 
   updateServing = (e) => {
@@ -48,7 +49,7 @@ export default class HoldItems extends Component {
     return (
       ((this.props.items).length > 0)
       ? <div className="heldItems">
-        <Grid container>
+        <Grid container justify='space-evenly'>
           {this.props.items.map((item) => (
             <Card key={item.id} style={this.cardStyle}>
               <CardContent>
