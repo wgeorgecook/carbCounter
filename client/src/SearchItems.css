@@ -1,4 +1,5 @@
 .searchitems {
-    width: 66%;
+    width: 98%;
+    max-width: 800px;
     margin: auto;
 }

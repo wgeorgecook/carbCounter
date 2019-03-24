@@ -21,11 +21,9 @@ class App extends Component {
   render() {
     return (
       <div className="root">
-        <div className="top">
-          <AppBar color="primary" position="static">
+          <AppBar className="top" color="primary" position="static">
             <h1 className="appBar">Welcome to Carb Counter </h1>
           </AppBar>
-        </div>
         <Home />
       </div>
     );
