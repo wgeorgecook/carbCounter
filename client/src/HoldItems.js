@@ -17,6 +17,9 @@ export default class HoldItems extends Component {
     items: [],
   }
 
+  cardStyle = {
+    margin: '10px'
+  }
 
   updateServing = (e) => {
     if ((this.state.items).length > 0 && e.target.value >= 0) {
@@ -47,7 +50,7 @@ export default class HoldItems extends Component {
       ? <div className="heldItems">
         <Grid container>
           {this.props.items.map((item) => (
-            <Card key={item.id}>
+            <Card key={item.id} style={this.cardStyle}>
               <CardContent>
                 {item.label} <br/>
                 {item.carbs} Carbohydates (g) <br/>
