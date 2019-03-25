@@ -11,6 +11,10 @@ export default class EditFood extends Component {
     success: null
   }
 
+  editStyle = {
+    margin: '.25em'
+  }
+
   handleChange = (e) => {
     const key = e.target.id;
     const value = e.target.value;
@@ -68,8 +72,8 @@ export default class EditFood extends Component {
             <FormControl>
               <Input id="newCarbs" type="number" placeholder="New carbs" onChange={ this.handleChange }/>
             </FormControl>
-            <Button variant="contained" color="secondary" form="editform" onClick={this.openEdit}>Close</Button>
-            <Button variant="contained" color="secondary" form="editform" onClick={this.updateFood} type="submit">Save</Button>
+            <Button style={this.editStyle} variant="contained" color="secondary" form="editform" onClick={this.openEdit}>Close</Button>
+            <Button style={this.editStyle} variant="contained" color="secondary" form="editform" onClick={this.updateFood} type="submit">Save</Button>
           </form>
         : <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={this.props.foodId}>Edit</Button>
         }
