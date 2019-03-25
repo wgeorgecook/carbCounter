@@ -18,7 +18,9 @@ export default class NewItem extends Component {
   }
 
   buttonStyle = {
-    margin: '.5em'
+    margin: '.25em',
+    height: '48px',
+    width: '100px'
   }
 
   handleChange = (e) => {
@@ -58,7 +60,7 @@ export default class NewItem extends Component {
               <Input type='number' placeholder="Carbohydrates" id="carbs" value={ this.state.carbs }  onChange={ this.handleChange } required/>
             </FormControl>
             <div id="formButtons" style={this.gridStyle}>
-              <Grid direction='row' justify='flex-end'>
+              <Grid container direction='row' justify='flex-end'>
                 <Button
                     style={this.buttonStyle}
                     variant="contained"
@@ -68,6 +70,7 @@ export default class NewItem extends Component {
                       Add item
                   </Button>
                   <Button
+                    style={this.buttonStyle}
                     variant="contained"
                     color="primary"
                     onClick={ this.props.onHideForm }>
