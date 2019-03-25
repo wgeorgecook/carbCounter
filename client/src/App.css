@@ -32,7 +32,8 @@
 
 .newForm, .addNew {
   width: 100%;
+  max-width: 800px;
   margin: auto;
-  margin-top: 2em;
+  margin-top: 100px;
   text-align: right;
 }

@@ -10,6 +10,10 @@ export default class Home extends Component {
     success: null
   }
 
+  fabStyle = {
+    marginRight: '.5em'
+  }
+
   switchNew = () => {
     (this.state.new)
     ? this.setState({new: false})
@@ -34,6 +38,7 @@ export default class Home extends Component {
             : <div className="addNew">
                 <Tooltip title="Add" aria-label="Add">
                   <Fab
+                    style={this.fabStyle}
                     aria-label="Add"
                     color="primary"
                     className="addNew"
