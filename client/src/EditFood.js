@@ -31,6 +31,13 @@ export default class EditFood extends Component {
       : this.setState({open: true})
   }
 
+  deleteItem = () => {
+    const item = 'Wine'
+    if (window.confirm(`Are you sure you want to delete ${item}?`) === true) {
+      console.log('really deleted');
+    }
+  }
+
   updateFood = (e) => {
     e.preventDefault();
     const foodid = this.props.foodId
@@ -75,7 +82,10 @@ export default class EditFood extends Component {
             <Button style={this.editStyle} variant="contained" color="secondary" form="editform" onClick={this.openEdit}>Close</Button>
             <Button style={this.editStyle} variant="contained" color="secondary" form="editform" onClick={this.updateFood} type="submit">Save</Button>
           </form>
-        : <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={this.props.foodId}>Edit</Button>
+        : <div className='editbuttons'>
+            <Button style={this.editStyle}  variant="contained" color="primary" type='submit' onClick={this.openEdit} id={this.props.foodId}>Edit</Button>
+            <Button style={this.editStyle}  variant="contained" color="secondary" type='submit' onClick={this.deleteItem} id={this.props.foodId}>Delete</Button>
+          </div>
         }
         <Snackbar
           message={<span id='message-id'>Successfully updated item {this.props.foodId}!</span>}
