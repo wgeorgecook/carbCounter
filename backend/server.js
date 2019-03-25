@@ -67,6 +67,16 @@ router.post('/updateData', (req, res) => {
     })
 })
 
+// Delete an item
+
+router.post('/deleteItem', (req, res) => {
+    const { _id } = req.body;
+    Item.findByIdAndDelete(_id, err => {
+        if (err) return res.json( { success: false, error: err.message });
+        return res.json({success: true})
+    })
+})
+
 // CORS
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
