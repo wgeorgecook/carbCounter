@@ -17,6 +17,10 @@ export default class NewItem extends Component {
     padding: '1em'
   }
 
+  buttonStyle = {
+    margin: '.5em'
+  }
+
   handleChange = (e) => {
     const key = e.target.id;
     const value = e.target.value;
@@ -56,6 +60,7 @@ export default class NewItem extends Component {
             <div id="formButtons" style={this.gridStyle}>
               <Grid direction='row' justify='flex-end'>
                 <Button
+                    style={this.buttonStyle}
                     variant="contained"
                     color="primary"
                     type='submit'
