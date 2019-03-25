@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
-import { FormControl } from '@material-ui/core';
-import './NewItem.css'
+import { FormControl, Grid } from '@material-ui/core';
+// import './NewItem.css'
 
 export default class NewItem extends Component {
 
@@ -11,6 +11,10 @@ export default class NewItem extends Component {
     carbs: "",
     error: null,
     success: null
+  }
+
+  gridStyle = {
+    padding: '1em'
   }
 
   handleChange = (e) => {
@@ -42,33 +46,31 @@ export default class NewItem extends Component {
   render() {
     return (
       <div className="newItem">
-        <form id="newItemForm" onSubmit={ this.submitItem }>
-          <FormControl variant="outlined" required>
-            <Input type='text' placeholder="Item name" id="name" value={ this.state.name } onChange={ this.handleChange }/>
-          </FormControl>
-          <FormControl required>
-            <Input type='number' placeholder="Carbohydrates" id="carbs" value={ this.state.carbs }  onChange={ this.handleChange } required/>
-          </FormControl>
-          <div id="formButtons">
-            <div id="addNew">
-              <Button
-                variant="contained"
-                color="primary"
-                type='submit'
-                form="newItemForm">
-                  Add item
-              </Button>
+          <form id="newItemForm" onSubmit={ this.submitItem }>
+            <FormControl variant="outlined" required>
+              <Input type='text' placeholder="Item name" id="name" value={ this.state.name } onChange={ this.handleChange }/>
+            </FormControl>
+            <FormControl required>
+              <Input type='number' placeholder="Carbohydrates" id="carbs" value={ this.state.carbs }  onChange={ this.handleChange } required/>
+            </FormControl>
+            <div id="formButtons" style={this.gridStyle}>
+              <Grid direction='row' justify='flex-end'>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    type='submit'
+                    form="newItemForm">
+                      Add item
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={ this.props.onHideForm }>
+                      Hide
+                  </Button>
+              </Grid>
             </div>
-            <div id="hideForm">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={ this.props.onHideForm }>
-                  Hide
-              </Button>
-            </div>
-          </div>
-        </form>
+          </form>
       </div>
     )
   }
