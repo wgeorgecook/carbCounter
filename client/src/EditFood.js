@@ -35,7 +35,7 @@ export default class EditFood extends Component {
     const id = this.props.foodId
     const item = this.props.name
     if (window.confirm(`Are you sure you want to delete ${item} (${id})?`) === true) {
-      fetch('http://localhost:3001/api/deleteItem', {
+      fetch('http://superstubby.ddns.net:3001/api/deleteItem', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ _id: id })
