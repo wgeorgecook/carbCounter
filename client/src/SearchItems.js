@@ -41,6 +41,14 @@ export default class SearchItems extends Component {
       })
   }
 
+  deleteSearchItem = (itemid) => {
+    this.setState( prevState => {
+      const newOptions = [...prevState.selectedOptions]
+      const filter = newOptions.filter((i) => i.id !== itemid)
+      return {selectedOptions: filter}
+    })
+  }
+
 
   render() {
     return (
@@ -55,6 +63,7 @@ export default class SearchItems extends Component {
         <HoldItems
           items={this.state.selectedOptions}
           onEdit={this.updateSearch}
+          onDelete={this.deleteSearchItem}
         />
       </div>
     )
