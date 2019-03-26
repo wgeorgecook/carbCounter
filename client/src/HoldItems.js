@@ -69,7 +69,7 @@ export default class HoldItems extends Component {
                 </NativeSelect>
               </CardContent>
               <CardActions>
-                <EditFood foodId={item.id} name={item.label} carbs={item.carbs} onEdit={this.props.onEdit}/>
+                <EditFood foodId={item.id} name={item.label} carbs={item.carbs} onEdit={this.props.onEdit} onDeleteItem={this.props.onDelete}/>
               </CardActions>
             </Card>
           ))}
