@@ -108,16 +108,6 @@ export default class EditFood extends Component {
             horizontal: 'left'
           }}
           />
-          <Snackbar
-          message={<span id='message-id'>Successfully deleted {this.props.name}!</span>}
-          open={this.state.delete}
-          onClose={this.closeSnack}
-          autoHideDuration={6000}
-          anchorOrigin={ {
-            vertical: 'bottom',
-            horizontal: 'left'
-          }}
-        />
       </div>
     )
   }
