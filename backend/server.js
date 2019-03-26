@@ -68,7 +68,6 @@ router.post('/updateData', (req, res) => {
 })
 
 // Delete an item
-
 router.post('/deleteItem', (req, res) => {
     const { _id } = req.body;
     console.log(`Deleting ${_id}`)
