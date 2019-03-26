@@ -71,6 +71,7 @@ router.post('/updateData', (req, res) => {
 
 router.post('/deleteItem', (req, res) => {
     const { _id } = req.body;
+    console.log(`Deleting ${_id}`)
     Item.findByIdAndDelete(_id, err => {
         if (err) return res.json( { success: false, error: err.message });
         return res.json({success: true})
