@@ -42,11 +42,11 @@ export default class SearchItems extends Component {
       })
   }
 
-  deleteSearchItem = (itemid) => {
+  deleteSearchItem = (itemid, itemname) => {
     this.setState( prevState => {
       const newOptions = [...prevState.selectedOptions]
       const filter = newOptions.filter((i) => i.id !== itemid)
-      return {selectedOptions: filter, delete: itemid}
+      return {selectedOptions: filter, delete: itemname}
     })
   }
 

@@ -45,7 +45,7 @@ export default class EditFood extends Component {
         if(!res.success) this.setState( { delete: res.error.message || res.error })
         else this.setState({ delete: true })
       })
-      .then( this.props.onDeleteItem(id) )
+      .then( this.props.onDeleteItem(id, item) )
     }
   }
 
