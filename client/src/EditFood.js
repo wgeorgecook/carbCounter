@@ -22,7 +22,7 @@ export default class EditFood extends Component {
   }
 
   closeSnack = () => {
-    this.setState( { success: null })
+    this.setState( { success: null, delete: null })
   }
 
   openEdit = () => {
@@ -35,7 +35,7 @@ export default class EditFood extends Component {
     const id = this.props.foodId
     const item = this.props.name
     if (window.confirm(`Are you sure you want to delete ${item} (${id})?`) === true) {
-      fetch('http://superstubby.ddns.net:3001/api/deleteItem', {
+      fetch('http://localhost:3001/api/deleteItem', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ _id: id })
@@ -45,6 +45,7 @@ export default class EditFood extends Component {
         if(!res.success) this.setState( { delete: res.error.message || res.error })
         else this.setState({ delete: true })
       })
+      .then( this.props.onDeleteItem )
     }
   }
 
@@ -100,6 +101,16 @@ export default class EditFood extends Component {
         <Snackbar
           message={<span id='message-id'>Successfully updated item {this.props.foodId}!</span>}
           open={this.state.success}
+          onClose={this.closeSnack}
+          autoHideDuration={6000}
+          anchorOrigin={ {
+            vertical: 'bottom',
+            horizontal: 'left'
+          }}
+          />
+          <Snackbar
+          message={<span id='message-id'>Successfully deleted {this.props.name}!</span>}
+          open={this.state.delete}
           onClose={this.closeSnack}
           autoHideDuration={6000}
           anchorOrigin={ {
