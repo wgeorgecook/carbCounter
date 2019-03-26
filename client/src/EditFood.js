@@ -22,13 +22,31 @@ export default class EditFood extends Component {
   }
 
   closeSnack = () => {
-    this.setState( { success: null })
+    this.setState( { success: null, delete: null })
   }
 
   openEdit = () => {
     (this.state.open)
       ? this.setState({open: false})
       : this.setState({open: true})
+  }
+
+  deleteItem = (e) => {
+    const id = this.props.foodId
+    const item = this.props.name
+    if (window.confirm(`Are you sure you want to delete ${item} (${id})?`) === true) {
+      fetch('http://localhost:3001/api/deleteItem', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ _id: id })
+      })
+      .then( res => res.json() )
+      .then( res => {
+        if(!res.success) this.setState( { delete: res.error.message || res.error })
+        else this.setState({ delete: true })
+      })
+      .then( this.props.onDeleteItem(id, item) )
+    }
   }
 
   updateFood = (e) => {
@@ -75,7 +93,10 @@ export default class EditFood extends Component {
             <Button style={this.editStyle} variant="contained" color="secondary" form="editform" onClick={this.openEdit}>Close</Button>
             <Button style={this.editStyle} variant="contained" color="secondary" form="editform" onClick={this.updateFood} type="submit">Save</Button>
           </form>
-        : <Button variant="contained" color="primary" type='submit' onClick={this.openEdit} id={this.props.foodId}>Edit</Button>
+        : <div className='editbuttons'>
+            <Button style={this.editStyle} variant="contained" color="primary" type='submit' onClick={this.openEdit}>Edit</Button>
+            <Button style={this.editStyle} variant="contained" color="secondary" type='submit' onClick={this.deleteItem} id={this.props.foodId}>Delete</Button>
+          </div>
         }
         <Snackbar
           message={<span id='message-id'>Successfully updated item {this.props.foodId}!</span>}
@@ -86,7 +107,7 @@ export default class EditFood extends Component {
             vertical: 'bottom',
             horizontal: 'left'
           }}
-        />
+          />
       </div>
     )
   }

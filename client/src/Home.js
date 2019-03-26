@@ -26,6 +26,9 @@ export default class Home extends Component {
     : this.setState({new: true});
   }
 
+  closeSnack = () => {
+    this.setState({success: null})
+  }
 
   render() {
     return (

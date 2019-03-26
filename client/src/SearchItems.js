@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AsyncSelect from 'react-select/lib/Async';
 import HoldItems from './HoldItems';
 import './SearchItems.css';
+import { Snackbar } from '@material-ui/core';
 
 export default class SearchItems extends Component {
 
@@ -41,6 +42,14 @@ export default class SearchItems extends Component {
       })
   }
 
+  deleteSearchItem = (itemid, itemname) => {
+    this.setState( prevState => {
+      const newOptions = [...prevState.selectedOptions]
+      const filter = newOptions.filter((i) => i.id !== itemid)
+      return {selectedOptions: filter, delete: itemname}
+    })
+  }
+
 
   render() {
     return (
@@ -55,6 +64,18 @@ export default class SearchItems extends Component {
         <HoldItems
           items={this.state.selectedOptions}
           onEdit={this.updateSearch}
+          onDelete={this.deleteSearchItem}
+        />
+
+        <Snackbar
+          message={<span id='message-id'>Successfully deleted {this.state.delete}!</span>}
+          open={this.state.delete}
+          onClose={this.closeSnack}
+          autoHideDuration={6000}
+          anchorOrigin={ {
+            vertical: 'bottom',
+            horizontal: 'left'
+          }}
         />
       </div>
     )
