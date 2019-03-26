@@ -50,6 +50,9 @@ export default class SearchItems extends Component {
     })
   }
 
+  closeSnack = () => {
+    this.setState( {delete: null} )
+  }
 
   render() {
     return (
