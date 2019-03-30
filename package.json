@@ -1,7 +1,7 @@
 {
   "name": "carbcounter",
   "version": "1.0.0",
-  "description": "",
+  "description": "An easy tool to calculate carbohydrate intake based on the foods you eat.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
