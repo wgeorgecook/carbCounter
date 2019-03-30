@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import { FormControl, Grid } from '@material-ui/core';
-// import './NewItem.css'
+
 
 export default class NewItem extends Component {
 
@@ -26,7 +26,6 @@ export default class NewItem extends Component {
   handleChange = (e) => {
     const key = e.target.id;
     const value = e.target.value;
-    // console.log(e.target)
     this.setState({ [key]: value })
   }
 
