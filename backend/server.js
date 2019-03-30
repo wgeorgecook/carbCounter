@@ -38,7 +38,7 @@ router.get('/items', (req, res) => {
 router.post('/items', (req, res) => {
     const item = new Item();
 
-    const { name, carbs } = req.body;
+    const { name, carbs, user } = req.body;
 
     if (!name || !carbs) {
         // Throw error
@@ -50,6 +50,7 @@ router.post('/items', (req, res) => {
 
     item.name = name;
     item.carbs = carbs;
+    item.user = user;
     item.save(err => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });

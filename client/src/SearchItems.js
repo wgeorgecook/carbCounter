@@ -11,18 +11,24 @@ export default class SearchItems extends Component {
     selectedOptions: "",
   }
 
+  componentDidMount() {
+    this.setState( { user: this.props.user })
+  }
 
   getOptions = async (input) => {
     const response = await fetch('http://superstubby.ddns.net:3001/api/items');
     const json = await response.json();
     // This map function maps the returned data into an object array Async Select can read
-    this.setState({options: (json.data.map( obj => ( { value: obj.name, label: obj.name, carbs: obj.carbs, servings: 0, id: obj._id } )))})
+    this.setState({options: (json.data.map( obj => ( { user: obj.user, value: obj.name, label: obj.name, carbs: obj.carbs, servings: 0, id: obj._id } )))})
     return this.filterOptions(input);
   }
 
   filterOptions = (input) => {
     // Filters out options we aren't interested in
-    return this.state.options.filter( i => i.label.toLowerCase().includes(input.toLowerCase()));
+    return this.state.options.filter( i =>
+      i.label.toLowerCase().includes(input.toLowerCase())
+      && i.user !== this.state.user
+      );
   }
 
 

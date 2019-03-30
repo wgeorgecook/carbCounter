@@ -4,6 +4,8 @@ import NewItem from './NewItem';
 import { Fab, Tooltip, Snackbar } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
+import getCognitoUser from './GetUser'
+
 export default class Home extends Component {
   state = {
     new: false,
@@ -12,6 +14,10 @@ export default class Home extends Component {
 
   fabStyle = {
     marginRight: '.5em'
+  }
+
+  componentDidMount() {
+    this.setState( { user: getCognitoUser().username } )
   }
 
   switchNew = () => {
@@ -33,10 +39,10 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home">
-        <SearchItems />
+        <SearchItems user={this.state.user}/>
           { (this.state.new) // Show new form
             ?  <div className="newForm">
-                <NewItem onHideForm={ this.switchNew } onGoodSave={ this.goodSave }/>
+                <NewItem onHideForm={ this.switchNew } onGoodSave={ this.goodSave } user={ this.state.user }/>
               </div>
             : <div className="addNew">
                 <Tooltip title="Add" aria-label="Add">
