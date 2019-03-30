@@ -39,7 +39,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home">
-        <SearchItems />
+        <SearchItems user={this.state.user}/>
           { (this.state.new) // Show new form
             ?  <div className="newForm">
                 <NewItem onHideForm={ this.switchNew } onGoodSave={ this.goodSave } user={ this.state.user }/>
