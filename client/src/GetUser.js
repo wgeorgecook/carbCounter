@@ -1,6 +1,9 @@
 import { CognitoUserPool } from 'amazon-cognito-identity-js'
 import { getId } from './cognitoConfig'
 
+/* Code modified from Gabe Weaver's public gist
+at https://gist.github.com/gabeweaver/d1be9f0d41069437f576c375c30e134c */
+
 /* Config for CognitoID */
 const config = {
   userPool: {
