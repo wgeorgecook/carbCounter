@@ -30,15 +30,19 @@ export default class NewItem extends Component {
     this.setState({ [key]: value })
   }
 
+  componentDidMount() {
+    this.setState( { user: this.props.user })
+  }
+
   submitItem = (e) => {
     console.log(e.target);
     e.preventDefault();
-    const { name, carbs } = this.state;
+    const { name, carbs, user} = this.state;
     if (!name || !carbs) return;
     fetch('http://superstubby.ddns.net:3001/api/items', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, carbs }),
+      body: JSON.stringify({ name, carbs, user }),
     })
     .then(res => res.json())
     .then( res => {
