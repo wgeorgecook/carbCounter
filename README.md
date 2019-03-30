@@ -14,3 +14,7 @@ The front end uses [React](https://www.reactjs.org) to render all components. AP
 
 ### Contribution
 This was a personal project to learn Node.js and NoSQL databases. However, there are several things that can be improved. Right now usernames are passed to the SearchItems component and data added by other users are filtered out. It would be much more scalable and efficient to give each user their own document upon sign up. I also need a privacy policy.
+
+### Code of Conduct
+I utilize the [Contributor Covenant](https://www.contributor-covenant.org/) to govern my code of conduct. Please see CODE_OF_
+CONDUCT.md for details.
