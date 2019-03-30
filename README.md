@@ -13,4 +13,4 @@ I choose [MongoDB](https://www.mongodb.com/) to run my backend database. I have 
 The front end uses [React](https://www.reactjs.org) to render all components. API calls to the backend use the fetch() API. Be sure you point this to your backend. Otherwise you'll hit mine by default. This runs in ./client. `cd` to the client folder and run `npm install`. This will install dependencies, afterward you can run `npm start` to start the server.
 
 ### Contribution
-This was a personal project to learn Node.js and NoSQL databases. However, there are several things that can be improved. Right now usernames are passed to the SearchItems component and data added by other users are filtered out. It would be much more scalable and efficient to give each user their own document upon sign up.
+This was a personal project to learn Node.js and NoSQL databases. However, there are several things that can be improved. Right now usernames are passed to the SearchItems component and data added by other users are filtered out. It would be much more scalable and efficient to give each user their own document upon sign up. I also need a privacy policy.
